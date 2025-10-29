@@ -2,6 +2,7 @@ import OpenAI from 'openai';
 
 const openai = new OpenAI({
   apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+  baseURL: 'https://openrouter.ai/api/v1',
   dangerouslyAllowBrowser: true // Only for development
 });
 
@@ -55,7 +56,7 @@ IMPORTANT:
 
   try {
     const response = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',
+      model: 'openai/gpt-4o-mini',
       messages: [
         {
           role: 'system',
@@ -84,7 +85,7 @@ IMPORTANT:
 export const chatWithMirror = async (messages: { role: string; content: string }[]) => {
   try {
     const response = await openai.chat.completions.create({
-      model: 'gpt-4-turbo-preview',
+      model: 'openai/gpt-4-turbo',
       messages: [
         {
           role: 'system',
